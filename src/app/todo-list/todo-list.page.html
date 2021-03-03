@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>To Do List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (click)="addNewTask()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-card *ngFor="let todo of todos">
+    <ion-card-header style="text-align: center">
+      <ion-card-title>{{todo.title}}</ion-card-title>
+      <ion-card-subtitle>{{todo.duedate}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-label>{{todo.desc}}</ion-label>
+          <ion-text color="primary"> {{todo.status}} </ion-text>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="delete(todo.todoId)">
+            DELETE
+          </ion-item-option>
+          <ion-item-option color="warning" (click)="edit(todo.todoId)">
+            EDIT
+          </ion-item-option>
+          <ion-item-option color="success" (click)="done(todo.todoId)">
+            DONE
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

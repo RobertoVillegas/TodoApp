@@ -1,0 +1,30 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Descripción de la tarea</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <ion-text color="primary">
+    <h1>{{ todoTitle }}</h1>
+  </ion-text>
+
+  <ion-text color="secondary">
+    <h2>{{ todoDesc }}</h2>
+  </ion-text>
+
+  <!-- <ion-text color="tertiary">
+    <h3>Vestibulum eleifend lorem nec neque interdum varius.</h3>
+  </ion-text>
+
+  <ion-text color="success">
+    <h4>Sed in neque at nibh congue tincidunt.</h4>
+  </ion-text>
+
+  <ion-text color="warning">
+    <h5>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</h5>
+  </ion-text> -->
+</ion-content>

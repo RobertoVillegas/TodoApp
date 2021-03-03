@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <form>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Task</ion-label>
+            <ion-input required type="text" [(ngModel)]="title" name="title"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Due Date</ion-label>
+            <ion-datetime
+              required
+              [(ngModel)]="duedate"
+              name="duedate"
+              display-format="DD.MM.YYYY HH:mm"
+              pickerFormat="DD.MM.YYYY HH:mm"
+            ></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea
+              required
+              type="text"
+              [(ngModel)]="desc"
+              name="title"
+              rows="4"
+              cols="20"
+            ></ion-textarea>
+          </ion-item>
+
+          <ion-button (click)="updateTodo()" expand="block" fill="clear" shape="round">
+            Update Task
+          </ion-button>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
