@@ -76,9 +76,7 @@ export class TodoEditPage implements OnInit {
       .then(() => {
         loading.dismiss();
         this.toast('Task successfully added!', 'success');
-        // FIXME: Ruta temporal
-        this.router.navigate(['/test']);
-        // this.router.navigate(['/list']);
+        this.router.navigate(['/list']);
       })
       .catch((error) => {
         loading.dismiss();
