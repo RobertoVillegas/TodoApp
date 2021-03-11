@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../services/todo.service';
 import { Todo } from '../models/todo';
-import { LoadingController, ToastController } from '@ionic/angular';
+import {
+  LoadingController,
+  ModalController,
+  PopoverController,
+  ToastController,
+} from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { PopoverComponent } from '../popover/popover.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -19,13 +26,44 @@ export class TodoListPage implements OnInit {
     private loadingCtrl: LoadingController,
     private router: Router,
     private toastr: ToastController,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public popoverController: PopoverController,
+    public modalController: ModalController
   ) {}
 
   ngOnInit() {
     this.todoService.getTodos().subscribe((todos) => {
       this.todos = todos;
     });
+  }
+
+  async presentPopover(ev, todoId: string) {
+    // ev: any
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true,
+      componentProps: {
+        todoId: todoId,
+      },
+    });
+    return await popover.present();
+  }
+
+  async presentModal(todoTitle: string, todoDesc: string) {
+    const modal = await this.modalController.create({
+      component: ModalComponent,
+      cssClass: 'my-modal-css',
+      componentProps: {
+        todoTitle: todoTitle,
+        todoDesc: todoDesc,
+      },
+      swipeToClose: true,
+      // showBackdrop: true,
+      // backdropDismiss: false,
+    });
+    return await modal.present();
   }
 
   addNewTask() {
@@ -58,7 +96,7 @@ export class TodoListPage implements OnInit {
       });
   } // End of delete task
 
-  async done(todoId) {
+  async done(todoId, todoStatus: boolean) {
     const loading = await this.loadingCtrl.create({
       message: 'Updating status...',
       spinner: 'crescent',
@@ -67,11 +105,13 @@ export class TodoListPage implements OnInit {
 
     loading.present();
 
+    const statusTmp = todoStatus === true ? false : true;
+
     this.afs
       .collection('todo')
       .doc(todoId)
       .update({
-        status: 'Done',
+        status: statusTmp,
       })
       .then(() => {
         loading.dismiss();
