@@ -25,43 +25,45 @@
     </ion-fab-button>
   </ion-fab>
 
-
   <div>
     <ion-card *ngFor="let todo of todos">
       <ion-grid mode="md">
         <ion-row class="ion-align-items-start">
           <ion-col size="8">
             <ion-card-header>
-              <ion-card-title>
-                {{todo.title}}
-              </ion-card-title>
+              <ion-card-title> {{todo.title}} </ion-card-title>
               <ion-card-subtitle>{{todo.duedate | date:'MMM d, h:mm a'}}</ion-card-subtitle>
             </ion-card-header>
           </ion-col>
           <ion-col>
-            <ion-card-header style="text-align: end;">
-              <ion-checkbox style="margin-right: 10px;" [(ngModel)]="todo.status"
-                (click)="done(todo.todoId,todo.status)">
+            <ion-card-header style="text-align: end">
+              <ion-checkbox
+                style="margin-right: 10px"
+                [(ngModel)]="todo.status"
+                (click)="done(todo.todoId,todo.status)"
+              >
               </ion-checkbox>
-              <ion-icon name="ellipsis-vertical" (click)="presentPopover($event, todo.todoId)"></ion-icon>
+              <ion-icon
+                name="ellipsis-vertical"
+                (click)="presentPopover($event, todo.todoId)"
+              ></ion-icon>
             </ion-card-header>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col style=" margin-top: -30px;">
+          <ion-col style="margin-top: -30px">
             <ion-card-header>
-              <ion-icon name="chatbox-outline" [ngClass]="{'icon-visible':todo.desc === ''}"
-                (click)="presentModal(todo.title, todo.desc)"></ion-icon>
+              <ion-icon
+                name="chatbox-outline"
+                [ngClass]="{'icon-visible':todo.desc === ''}"
+                (click)="presentModal(todo.title, todo.desc)"
+              ></ion-icon>
             </ion-card-header>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card>
   </div>
-
-
-
-
 
   <!-- <ion-card *ngFor="let todo of todos">
     <ion-card-header>
@@ -90,7 +92,4 @@
         (click)="presentModal(todo.title, todo.desc)"></ion-icon>
     </ion-card-header>
   </ion-card> -->
-
-
-
 </ion-content>

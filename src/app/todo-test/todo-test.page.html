@@ -23,12 +23,21 @@
       <ion-card-title>{{todo.title}}</ion-card-title>
       <ion-card-subtitle>{{todo.duedate | date:'MMM d, y, h:mm a'}}</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-header style="float: right;">
-      <ion-checkbox [(ngModel)]="todo.status" (click)="done(todo.todoId,todo.status)"></ion-checkbox>
-      <ion-icon name="ellipsis-horizontal-outline" (click)="presentPopover($event, todo.todoId)"
-        class="ion-padding-horizontal"></ion-icon>
-      <ion-icon name="chatbox-outline" [ngClass]="{'icon-visible':todo.desc === ''}"
-        (click)="presentModal(todo.title, todo.desc)"></ion-icon>
+    <ion-card-header style="float: right">
+      <ion-checkbox
+        [(ngModel)]="todo.status"
+        (click)="done(todo.todoId,todo.status)"
+      ></ion-checkbox>
+      <ion-icon
+        name="ellipsis-horizontal-outline"
+        (click)="presentPopover($event, todo.todoId)"
+        class="ion-padding-horizontal"
+      ></ion-icon>
+      <ion-icon
+        name="chatbox-outline"
+        [ngClass]="{'icon-visible':todo.desc === ''}"
+        (click)="presentModal(todo.title, todo.desc)"
+      ></ion-icon>
     </ion-card-header>
     <!-- [class.icon-visible]="todo.desc.length != null" -->
 
