@@ -2,25 +2,38 @@
   <ion-toolbar>
     <ion-title>Acerca</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/test"></ion-back-button>
+      <ion-back-button defaultHref="/list"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <style>
+    .text {
+      text-transform: uppercase;
+    }
+  </style>
 </ion-header>
 
 <ion-content class="ion-padding">
   <div class="ion-text-center">
-    <h1>TodoApp v1.0</h1>
-    <h2>Materia: Dispositivos Móviles II</h2>
-    <h2>Participantes</h2>
-    <h3>Roberto Villegas</h3>
-    <h3>Lourdes Lerma</h3>
-    <h3>Sheila Ávalos</h3>
-    <h3>Pablo García</h3>
-    <h3>Christopher Miranda</h3>
-    <h3>Cruz Pérez</h3>
-    <h3>Natanaél López</h3>
-    <h3>Abraham Pequeño</h3>
-    <h2>Profesor:</h2>
-    <h3>Mtro. Sergio Yorick</h3>
+    <h1>
+      <ion-icon name="reader-outline"></ion-icon>
+      <br>
+      TodoApp v1.0
+    </h1>
+    <br>
+    <h5>Desarrollada por</h5>
+    <div class="text">
+      <p>Roberto Villegas</p>
+      <p>Lourdes Lerma</p>
+      <p>Sheila Ávalos</p>
+      <p>Pablo García</p>
+      <p>Christopher Miranda</p>
+      <p>Cruz Pérez</p>
+      <p>Natanaél López</p>
+      <p>Abraham Pequeño</p>
+      <br>
+      <p>Para la materia de Dispositivos Móviles II impartida por el Mtro. Sergio Yorick</p>
+    </div>
+
   </div>
 </ion-content>
