@@ -1,6 +1,6 @@
-<ion-header>
+<ion-header translucent="true">
   <ion-toolbar>
-    <ion-title>To Do List Test</ion-title>
+    <ion-title>To Do List</ion-title>
     <ion-buttons slot="end">
       <ion-button routerLink="/acerca">
         <ion-icon slot="start" name="information-circle-outline"></ion-icon>
@@ -9,52 +9,88 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content fullscreen="true">
+  <ion-header collapse="condense" class="ion-no-border">
+    <ion-toolbar>
+      <ion-title size="large">To Do List</ion-title>
+    </ion-toolbar>
+    <!-- <ion-toolbar>
+      <ion-searchbar></ion-searchbar>
+    </ion-toolbar> -->
+  </ion-header>
+
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button (click)="addNewTask()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 
-  <ion-card *ngFor="let todo of todos">
+
+  <div>
+    <ion-card *ngFor="let todo of todos">
+      <ion-grid mode="md">
+        <ion-row class="ion-align-items-start">
+          <ion-col size="8">
+            <ion-card-header>
+              <ion-card-title>
+                {{todo.title}}
+              </ion-card-title>
+              <ion-card-subtitle>{{todo.duedate | date:'MMM d, h:mm a'}}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-col>
+          <ion-col>
+            <ion-card-header style="text-align: end;">
+              <ion-checkbox style="margin-right: 10px;" [(ngModel)]="todo.status"
+                (click)="done(todo.todoId,todo.status)">
+              </ion-checkbox>
+              <ion-icon name="ellipsis-vertical" (click)="presentPopover($event, todo.todoId)"></ion-icon>
+            </ion-card-header>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style=" margin-top: -30px;">
+            <ion-card-header>
+              <ion-icon name="chatbox-outline" [ngClass]="{'icon-visible':todo.desc === ''}"
+                (click)="presentModal(todo.title, todo.desc)"></ion-icon>
+            </ion-card-header>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+
+
+
+
+
+  <!-- <ion-card *ngFor="let todo of todos">
     <ion-card-header>
-      <!-- style="text-align: center" -->
       <ion-card-title>{{todo.title}}</ion-card-title>
       <ion-card-subtitle>{{todo.duedate | date:'MMM d, y, h:mm a'}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-header>
-      <ion-checkbox
-        [(ngModel)]="todo.status"
-        (click)="done(todo.todoId,todo.status)"
-      ></ion-checkbox>
-      <ion-icon
-        name="ellipsis-horizontal-outline"
-        (click)="presentPopover($event, todo.todoId)"
-        class="ion-padding-horizontal"
-      ></ion-icon>
-      <ion-icon
-        name="document-text-outline"
-        [ngClass]="{'icon-visible':todo.desc === ''}"
-        (click)="presentModal(todo.title, todo.desc)"
-      ></ion-icon>
+      <ion-checkbox [(ngModel)]="todo.status" (click)="done(todo.todoId,todo.status)"></ion-checkbox>
+      <ion-icon name="ellipsis-vertical" (click)="presentPopover($event, todo.todoId)" style="align-self: flex-end;">
+      </ion-icon>
+      <ion-icon name="document-text-outline" [ngClass]="{'icon-visible':todo.desc === ''}"
+        (click)="presentModal(todo.title, todo.desc)"></ion-icon>
     </ion-card-header>
-    <!-- [class.icon-visible]="todo.desc.length != null" -->
+  </ion-card> -->
 
-    <!-- <ion-card-content>
-      <ion-label>{{todo.desc}}</ion-label>
-      <ion-item-sliding>
-        <ion-item lines="none">
-          <ion-label>{{todo.desc}}</ion-label>
-          <ion-text color="primary"> {{todo.status}} </ion-text>
-        </ion-item>
-        <ion-item-options side="end">
-          <ion-item-option color="danger" (click)="delete(todo.todoId)"> DELETE </ion-item-option>
-          <ion-item-option color="warning" (click)="edit(todo.todoId)"> EDIT </ion-item-option>
-          <ion-item-option color="success" (click)="done(todo.todoId,todo.status)">
-            DONE
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-card-content> -->
-  </ion-card>
+  <!-- <ion-card *ngFor="let todo of todos">
+    <ion-card-header>
+      <ion-card-title>{{todo.title}}</ion-card-title>
+      <ion-card-subtitle>{{todo.duedate | date:'MMM d, y, h:mm a'}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-header>
+      <ion-checkbox [(ngModel)]="todo.status" (click)="done(todo.todoId,todo.status)"></ion-checkbox>
+      <ion-icon name="ellipsis-horizontal-outline" (click)="presentPopover($event, todo.todoId)"
+        class="ion-padding-horizontal"></ion-icon>
+      <ion-icon name="document-text-outline" [ngClass]="{'icon-visible':todo.desc === ''}"
+        (click)="presentModal(todo.title, todo.desc)"></ion-icon>
+    </ion-card-header>
+  </ion-card> -->
+
+
+
 </ion-content>
