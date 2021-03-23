@@ -40,6 +40,18 @@
             ></ion-datetime>
           </ion-item>
 
+          <ion-item>
+            <ion-label>DDD. MMM DD, YY (custom locale)</ion-label>
+            <ion-datetime
+              value="1995-04-15"
+              min="1990-02"
+              max="2000"
+              [dayShortNames]="customDayShortNames"
+              displayFormat="DDD. MMM DD, YY"
+              monthShortNames="jan, feb, mar, apr, mai, jun, jul, aug, sep, okt, nov, des"
+            ></ion-datetime>
+          </ion-item>
+
           <ion-button (click)="addTask()" expand="block" fill="clear" shape="round">
             Save
           </ion-button>
