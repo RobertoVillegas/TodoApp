@@ -21,6 +21,7 @@ import { environment } from '../environments/environment.prod';
 
 // Popover
 // import { PopoverComponent } from './popover/popover.component';
+// DatePipe Import
 
 @NgModule({
   declarations: [AppComponent],
