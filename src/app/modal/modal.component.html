@@ -8,7 +8,36 @@
 </ion-header>
 
 <ion-content fullscreen class="ion-padding">
-  <ion-text color="white">
+
+  <ion-card>
+    <div>
+      <ion-card-header>
+        <ion-card-title mode="md">
+          {{ todoTitle }}
+        </ion-card-title>
+      </ion-card-header>
+      <!-- <hr style="height:1px;border-width:0;color:gray;background-color:gray; margin-right: 10px; margin-left: 10px;"> -->
+      <ion-card-content>
+        {{ todoDesc }}
+      </ion-card-content>
+    </div>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title mode="md">
+        <ion-icon name="calendar-clear-outline"></ion-icon>
+      </ion-card-title>
+      <ion-card-title mode="md">
+        <!-- {{todo.duedate | date:'MMM d, h:mm a'}} -->
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+
+
+
+  <!-- CODIGO CRUZ -->
+  <!-- <ion-text color="white">
     <div class="ion-text-center">
       <h1>{{ todoTitle }}</h1>
     </div>
@@ -18,7 +47,8 @@
     <div class="ion-text-justify">
       <h2>{{ todoDesc }}</h2>
     </div>
-  </ion-text>
+  </ion-text> -->
+  <!-- CODIGO CRUZ -->
 
   <!-- <ion-text color="tertiary">
     <h3>Vestibulum eleifend lorem nec neque interdum varius.</h3>
