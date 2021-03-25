@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
@@ -9,6 +10,10 @@ import { ModalController } from '@ionic/angular';
 export class ModalComponent implements OnInit {
   @Input('todoTitle') todoTitle;
   @Input('todoDesc') todoDesc;
+  @Input('todoDuedate') todoDuedate;
+
+  duedate: string;
+
   constructor(private modalController: ModalController) {}
 
   ngOnInit() {}

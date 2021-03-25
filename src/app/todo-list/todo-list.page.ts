@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PopoverComponent } from '../popover/popover.component';
 import { ModalComponent } from '../modal/modal.component';
+import { TodoAddPageRoutingModule } from '../todo-add/todo-add-routing.module';
 
 @Component({
   selector: 'app-todo-list',
@@ -51,13 +52,14 @@ export class TodoListPage implements OnInit {
     return await popover.present();
   }
 
-  async presentModal(todoTitle: string, todoDesc: string) {
+  async presentModal(todoTitle: string, todoDesc: string, todoDuedate: string) {
     const modal = await this.modalController.create({
       component: ModalComponent,
       cssClass: 'my-modal-css',
       componentProps: {
         todoTitle: todoTitle,
         todoDesc: todoDesc,
+        todoDuedate: todoDuedate,
       },
       swipeToClose: true,
       // showBackdrop: true,

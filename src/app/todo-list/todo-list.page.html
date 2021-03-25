@@ -56,7 +56,7 @@
               <ion-icon
                 name="chatbox-outline"
                 [ngClass]="{'icon-visible':todo.desc === ''}"
-                (click)="presentModal(todo.title, todo.desc)"
+                (click)="presentModal(todo.title, todo.desc, todo.duedate)"
               ></ion-icon>
             </ion-card-header>
           </ion-col>
