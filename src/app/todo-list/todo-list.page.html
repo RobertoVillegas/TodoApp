@@ -6,6 +6,11 @@
         <ion-icon slot="start" name="information-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <!-- <ion-buttons slot="start">
+      <ion-button (click)="displayConfetti()" id="screenConfetti">
+        <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -38,9 +43,10 @@
           <ion-col>
             <ion-card-header style="text-align: end">
               <ion-checkbox
+                id="screenConfetti"
                 style="margin-right: 12px"
                 [(ngModel)]="todo.status"
-                (click)="done(todo.todoId,todo.status)"
+                (click)="done(todo.todoId,todo.status);"
               >
               </ion-checkbox>
               <ion-icon

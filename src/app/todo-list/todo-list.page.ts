@@ -11,8 +11,16 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PopoverComponent } from '../popover/popover.component';
 import { ModalComponent } from '../modal/modal.component';
-import { TodoAddPageRoutingModule } from '../todo-add/todo-add-routing.module';
+// import { TodoAddPageRoutingModule } from '../todo-add/todo-add-routing.module';
 
+// import { Confetti } from '../../assets/js/confetti.min.js';
+
+// declare var Confetti: any;
+// const confetti = require('canvas-confetti');
+// import { confettiCannon } from 'canvas-confetti';
+// import * as Confetti from 'canvas-confetti';
+
+import * as Party from 'party-js';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.page.html',
@@ -35,6 +43,21 @@ export class TodoListPage implements OnInit {
   ngOnInit() {
     this.todoService.getTodos().subscribe((todos) => {
       this.todos = todos;
+    });
+  }
+
+  async displayConfetti() {
+    const party = Party;
+    console.log('confetti');
+    let siteColors = ['#ffa68d', '#fd3a84'];
+    party.screen({
+      // color: siteColors,
+      size: party.minmax(6, 12),
+      // count: party.variation(300 * (window.innerWidth / 1980), 0.4),
+      count: 300,
+      angle: -180,
+      spread: 80,
+      angularVelocity: party.minmax(6, 9),
     });
   }
 
@@ -118,6 +141,9 @@ export class TodoListPage implements OnInit {
       .then(() => {
         loading.dismiss();
         this.toast('Task updated!', 'success');
+        if (statusTmp === true) {
+          this.displayConfetti();
+        }
       })
       .catch((error) => {
         loading.dismiss();
